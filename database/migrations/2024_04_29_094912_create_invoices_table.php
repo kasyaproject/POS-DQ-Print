@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -12,8 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->uuid('kode_invoice')->primary();
-            $table->string('id_user');
+            $table->id('id');
+            $table->uuid('URL')->default(DB::raw('UUID()'));
+            $table->string('no_invoice');
+            $table->string('id_cust');
+            $table->string('id_pj');
+            $table->string('tanggal_jadi');
+            $table->string('waktu_jadi');
             $table->timestamps();
         });
     }

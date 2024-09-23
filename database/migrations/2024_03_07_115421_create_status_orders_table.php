@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('status_orders', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('info_status');
-            $table->string('id_kasir');            
-            $table->string('id_design');
-            $table->dateTime('waktu_design');
-            $table->string('id_operator');
-            $table->dateTime('waktu_operator');
-            $table->string('id_finishing');
-            $table->dateTime('waktu_finishing');
+            $table->string('id_kasir')->nullable();;
+            $table->dateTime('waktu_bayar')->nullable();;
+            $table->string('id_design')->nullable();
+            $table->dateTime('waktu_design')->nullable();
+            $table->string('id_operator')->nullable();
+            $table->dateTime('waktu_operator')->nullable();
+            $table->string('id_finishing')->nullable();
+            $table->dateTime('waktu_finishing')->nullable();
             $table->timestamps();
         });
     }

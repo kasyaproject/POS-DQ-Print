@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->integer('qty');
             $table->integer('harga');
-            $table->integer('hargaBB');
             $table->string('kategori');
             $table->timestamps();
         });

@@ -13,7 +13,6 @@ class produk extends Model
         'nama_produk',
         'qty',
         'harga',
-        'hargaBB',
         'kategori',
     ];
 

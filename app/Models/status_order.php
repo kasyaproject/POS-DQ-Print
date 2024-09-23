@@ -16,14 +16,14 @@ class status_order extends Model
 
     public function desain()
     {
-        return $this->hasOne(user::class, 'id', 'id_desain');
+        return $this->hasOne(user::class, 'id', 'id_design');
     }
 
     public function operator()
     {
         return $this->hasOne(user::class, 'id', 'id_operator');
     }
-    
+
     public function finishing()
     {
         return $this->hasOne(user::class, 'id', 'id_finishing');

@@ -3,18 +3,18 @@
 
     @section('container');
         {{-- MAIN TABLE --}}
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-4 mt-8">
+            <div class="mx-auto mt-8 max-w-7xl sm:px-6 lg:px-4">
                 <div class="flex items-center justify-between my-2 sm:mx-8 max-sm:px-2">            
                     <form action="{{ route('pemesanan.index') }}" method="GET" class="max-sm:w-60 sm:w-96">  
                         @csrf 
                         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                         <div class="relative">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                 </svg>
                             </div>
-                            <input type="search" id="default-search" name="search" value="{{ $search }}" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+                            <input type="search" id="default-search" name="search" value="{{ $search }}" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
                             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm max-sm:px-2 sm:px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 <span class="max-sm:hidden">
                                     Search
@@ -25,35 +25,43 @@
                             </button>
                         </div>
                     </form>
-                    <button data-modal-target="static-modal-order" data-modal-toggle="static-modal-order" type="button" class="text-white mt-1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm text-center sm:px-2 sm:py-2 me-2 mb-2">
-                        <span class="max-sm:hidden px-2 py-8">
-                            Tambah
-                        </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill-add w-4 h-4 m-4 sm:hidden" viewBox="0 0 16 16">
-                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                            <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
-                        </svg>
-                    </button>
+                    <a href="{{ route('pemesanan.create') }}">
+                        <button type="button" class="mt-1 mb-2 text-sm font-medium text-center text-white rounded-lg shadow-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 sm:px-2 sm:py-2 me-2">
+                            <span class="px-2 py-8 max-sm:hidden">
+                                Tambah
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 m-4 bi bi-person-fill-add sm:hidden" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                            </svg>
+                        </button>
+                    </a>                    
                 </div>
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-2 my-6">
+                <div class="mx-2 my-6 overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="w-full text-sm text-center text-gray-500 rtl:text-right dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
-                                        Kode
+                                        No. Invoice
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Nama Pemesan
+                                        Nama Customer
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Jenis Pesanan
+                                        Nama Produk
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Qty
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Estimasi jadi
+                                        Status
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tanggal Jadi
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Waktu Jadi
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         <span class="sr-only">Edit</span>
@@ -63,35 +71,52 @@
                             <tbody>
                                 @if($order->isEmpty())
                                     <tr>
-                                        <td colspan="6" class="text-center py-4 h-40">Tidak ada Data Pemesanan yang ditemukan.</td>
+                                        <td colspan="7" class="h-40 py-4 text-center">Tidak ada Data Pemesanan yang ditemukan.</td>
                                     </tr>
                                 @else
                                     @foreach ($order as $data)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                            <th scope="row" class="w-2/5 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $data->nama_cust }}
+                                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $data->invoiceinfo->no_invoice }} {{-- nomer invoice --}}
                                             </th>
-                                            <td class="w-2/5 px-6 py-4">
-                                                {{ $data->no_telp }}
+                                            <td class="px-6 py-4">
+                                                {{ $data->Customer->nama_cust }} {{-- nama cust --}}
                                             </td>
-                                            <td class="flex justify-center items-center px-6 py-4 text-center">
-                                                <button data-modal-target="default-modal-{{ $data->id }}" data-modal-toggle="default-modal-{{ $data->id }}" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-700 to-green-500 group-hover:from-green-700 group-hover:to-green-500 hover:text-white dark:text-white focus:ring-1 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800" type="button">
+                                            <td class="px-6 py-4">
+                                                {{ $data->nama_produk }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $data->qty }}
+                                            </td>
+                                            <td class="px-6 py-4 font-semibold dark:text-gray-300">
+                                                {{ $data->statusOrder->info_status }} 
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $data->invoiceinfo->tanggal_jadi }}
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                {{ $data->invoiceinfo->waktu_jadi }}
+                                            </td>
+                                            <td class="flex items-center justify-center px-6 py-4 text-center">
+                                                @if ($data->statusOrder->info_status == "Menunggu Pembayaran")
+                                                    <button data-modal-target="proses-modal-{{ $data->id }}" data-modal-toggle="proses-modal-{{ $data->id }}" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-700 to-blue-500 group-hover:from-blue-700 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-1 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" type="button">
+                                                        <div class="relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                                            <span class="m-2 max-sm:hidden">
+                                                                Proses
+                                                            </span>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-4 h-4 m-1 bi bi-pen-fill sm:hidden" viewBox="0 0 16 16">
+                                                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                @endif                                                
+                                                <button data-modal-target="detail-modal-{{ $data->id }}" data-modal-toggle="detail-modal-{{ $data->id }}" onclick="showPreorderDetails({{ $data->id }})" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-700 to-green-500 group-hover:from-green-700 group-hover:to-green-500 hover:text-white dark:text-white focus:ring-1 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800" type="button">
                                                     <div class="relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                                        <span class="max-sm:hidden m-2">
-                                                            Edit
+                                                        <span class="m-2 max-sm:hidden">
+                                                            Detail
                                                         </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-pen-fill w-4 h-4 m-1 sm:hidden" viewBox="0 0 16 16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-4 h-4 m-1 bi bi-pen-fill sm:hidden" viewBox="0 0 16 16">
                                                             <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
-                                                        </svg>
-                                                    </div>
-                                                </button>
-                                                <button data-modal-target="popup-modal-{{ $data->id }}" data-modal-toggle="popup-modal-{{ $data->id }}" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-1 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-700 to-red-500 group-hover:from-red-700 group-hover:to-red-500 hover:text-white dark:text-white focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800" type="button">
-                                                    <div class="relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                                        <span class="max-sm:hidden m-2">
-                                                            Hapus
-                                                        </span>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-pen-fill w-4 h-4 m-1 sm:hidden" viewBox="0 0 16 16">
-                                                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
                                                         </svg>
                                                     </div>
                                                 </button>
@@ -106,137 +131,226 @@
             </div>
         {{-- MAIN TABLE END --}}
 
-        {{-- Modal Tambah --}}
-        <div id="static-modal-order" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-4xl max-h-full">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Buat Preorder
-                        </h3>
-                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="static-modal-order">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <form action="{{ route('produk.store') }}" method="POST" class="p-4 md:p-5">
-                        @csrf
-                        <div class="grid gap-4 mb-4 grid-cols-2">
-                            <!-- Dropdown menu -->
-                            <div class="namaCust col-span-2 relative">
-                                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Customer</label>
-                                <input 
-                                    type="text" 
-                                    id="dropdownSearch" 
-                                    placeholder="Search..." 
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    oninput="filterFunction()"
-                                />
-                                <ul 
-                                    id="dropdownOptions" 
-                                    class="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto shadow-lg hidden"
-                                >
-                                    <!-- Options will be populated here by JavaScript -->
-                                </ul>
-                                <input class="hidden" id="selectedCustomerId" name="customer_id">
+        {{-- Detail modal Preorder --}}
+        @foreach ($order as $data)
+            <div id="detail-modal-{{ $data->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative w-full max-w-6xl max-h-full p-4">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between px-10 py-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl text-gray-900 dark:text-white">
+                                    Detail Pesanan
+                                </h3>
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                    {{ $data->invoiceinfo->no_invoice }}
+                                </h3>                                               
+                            </div>                    
+                            <!-- Modal body -->
+                            <div class="flex justify-between p-5">
+                                <div class="w-full p-2 bg-yellow- ">
+                                    <table class="w-full font-light dark:text-white">
+                                        <tr class="text-lg">
+                                            <td class="font-bold w-52">Penanggung Jawab</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama</td>
+                                            <td class="font-bold">: Andika</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="w-full p-2 pl-32 bg-blue-">
+                                    <table class="w-full font-normal dark:text-white">
+                                        <tr class="text-lg">
+                                            <td class="font-bold w-52">Customer</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama</td>
+                                            <td>: {{ $data->Customer->nama_cust }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No Tlp</td>
+                                            <td>: {{ $data->Customer->no_telp }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama Produk</td>
+                                            <td>: {{ $data->kodeProduk->nama_produk }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jumlah</td>
+                                            <td>: {{ $data->qty }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ukuran</td>
+                                            <td>: {{ $data->panjang }} x {{ $data->lebar }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Harga Satuan</td>
+                                            <td>: Rp.{{ $data->harga_satuan }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Harga</td>
+                                            <td>: Rp.{{ $data->harga_total }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waktu Jadi</td>
+                                            <td>: {{ $data->invoiceinfo->tanggal_jadi }} {{ $data->invoiceinfo->waktu_jadi }}</td>
+                                        </tr>
+                                    </table>
+                                </div>                        
                             </div>
-
-                            <div class="col-span-2">
-                                <label for="qty" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Qty Produk</label>
-                                <input type="text" name="qty" id="qty" value="{{ old('qty') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan qty produk" required="" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                @error('qty')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
-                                @enderror
-                            </div>      
-                            <div class="col-span-2">
-                                <label for="Kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori Produk</label>
-                                <select id="Kategori" name="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option selected="">Pilih Kategori produk</option>
-                                    <option value="A3+" {{ old('kategori') == 'A3+' ? 'selected' : '' }}>A3+</option>
-                                    <option value="Outdoor" {{ old('kategori') == 'Outdoor' ? 'selected' : '' }}>Outdoor</option>   
-                                    <option value="Indoor" {{ old('kategori') == 'Indoor' ? 'selected' : '' }}>Indoor</option>
-                                </select>
-                                @error('kategori')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
-                                @enderror
-                            </div>   
-                            <div id="harga" class="hidden col-span-2 sm:col-span-1">
-                                <label for="harga" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Produk</label>
-                                <input type="text" name="harga" id="harga" value="{{ old('harga') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan harga produk" required="" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                @error('harga')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
-                                @enderror
+                        
+                        <!-- Modal footer -->                    
+                        <div class="flex items-center p-4 border-t border-gray-200 rounded-b md:p-5 dark:border-gray-600">
+                            <div class="relative w-full overflow-x-auto">
+                                <h3 class="px-4 pb-4 text-lg text-gray-900 dark:text-white">Status Pesanan : <label class="text-base text-blue-400">{{ $data->statusOrder->info_status }}</label></h3>
+                                <table class="w-full text-sm text-center text-gray-500 rtl:text-right dark:text-gray-400">
+                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-600 dark:text-gray-400">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3">
+                                                Status
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Penanggung jawab
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                waktu
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (!empty($data->statusOrder->id_finishing))
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td class="px-6 py-4">
+                                                    Selesai Finishing
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="finishingName-{{ $data->id }}"></span>
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="finishingWaktu-{{ $data->id }}"></span>
+                                                </td>
+                                            </tr>
+                                        @endif                                    
+                                        @if (!empty($data->statusOrder->id_operator))
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td class="px-6 py-4">
+                                                    Selesai Cetak pesanan
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="operatorName-{{ $data->id }}"></span>
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="operatorWaktu-{{ $data->id }}"></span>
+                                                </td>
+                                            </tr>
+                                        @endif                                    
+                                        @if (!empty($data->statusOrder->id_design))
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td class="px-6 py-4">
+                                                    Selesai Desain
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="desainName-{{ $data->id }}"></span>
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="desainWaktu-{{ $data->id }}"></span>
+                                                </td>
+                                            </tr>
+                                        @endif                                    
+                                        @if (!empty($data->statusOrder->id_kasir))
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td class="px-6 py-4">
+                                                    Melakukan Pembayaran
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="kasirName-{{ $data->id }}"></span>
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    <span id="kasirWaktu-{{ $data->id }}"></span>
+                                                </td>
+                                            </tr>
+                                        @else
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td colspan="3" class="h-20 py-4 text-center">MENUNGGU PEMBAYARAN.</td>
+                                            </tr>
+                                        @endif                                      
+                                    </tbody>
+                                </table>
                             </div>
-                            <div id="hargaBB" class="hidden col-span-2 sm:col-span-1">
-                                <label for="hargaBB" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga BB Produk</label>
-                                <input type="text" name="hargaBB" id="hargaBB" value="{{ old('hargaBB') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan harga BB produk" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                @error('hargaBB')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
-                                @enderror
-                            </div>               
                         </div>
-                        <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                            Tambah Produk Baru
-                        </button>
-                    </form>                
+                    </div>
                 </div>
             </div>
-        </div> 
-        {{-- END Modal Tambah  --}}
+        @endforeach
 
+        {{-- Proses modal Preorder --}}
+        @foreach ($order as $data)            
+            <div id="proses-modal-{{ $data->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative w-full max-w-2xl max-h-full p-4">
+                    <!-- Modal content -->
+                    <form action="{{ route('pemesanan.update', ['id' => $data->id]) }}" method="POST" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        @csrf
+                        @method('PUT')
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                {{ $data->invoiceinfo->no_invoice }}
+                            </h3>
+                            <button type="button" class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="proses-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 space-y-4 md:p-5">
+                            <p class="text-xl font-semibold text-black dark:text-white">
+                                Melanjutkan proses preorder ke tahap desain.
+                            </p>
+                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                Pastikan bahwa Customer sudah melakukan pembayaran dengan benar.
+                            </p>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="flex items-center p-4 border-t border-gray-200 rounded-b md:p-5 dark:border-gray-600">
+                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ya, Lanjutkan</button>
+                            <button data-modal-hide="proses-modal-{{ $data->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Batalkan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+        
         <script>
-            const dropdownSearch = document.getElementById('dropdownSearch');
-            const dropdownOptions = document.getElementById('dropdownOptions');
-            const selectedCustomerId = document.getElementById('selectedCustomerId');
-        
-            // Show the dropdown when the input is focused
-            dropdownSearch.addEventListener('focus', () => {
-                dropdownOptions.classList.remove('hidden');
-                filterFunction();
-            });
-        
-            // Hide the dropdown when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!event.target.closest('.namaCust')) {
-                    dropdownOptions.classList.add('hidden');
-                }
-            });
-        
-            // Fetch and filter the dropdown options based on the search input
-            function filterFunction() {
-                const searchQuery = dropdownSearch.value;
-        
-                axios.get('/customers', {
-                    params: { search: searchQuery }
-                })
-                .then(response => {
-                    const data = response.data;
-                    dropdownOptions.innerHTML = data.map(customer => `
-                        <li class="px-3 py-2 hover:bg-gray-200 cursor-pointer dark:hover:bg-gray-600 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
-                        data-id="${customer.id}" data-name="${customer.nama_cust} - ${customer.no_telp}">
-                            ${customer.nama_cust} - ${customer.no_telp}
-                        </li>
-                    `).join('');
-                    
-                    // Add click event listeners to each option
-                    document.querySelectorAll('#dropdownOptions li').forEach(option => {
-                        option.addEventListener('click', function() {
-                            const name = this.getAttribute('data-name');
-                            const id = this.getAttribute('data-id');
-                            dropdownSearch.value = name;
-                            selectedCustomerId.value = id;
-                            dropdownOptions.classList.add('hidden');
-                        });
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
+            function showPreorderDetails(id) {
+                const kasirNameId = document.getElementById('kasirName');
+                $.ajax({
+                    url: `/pj/${id}`,
+                    method: 'GET',
+                    success: function(data) {
+                        // Menetapkan nilai menggunakan ID yang berasal dari data
+                        $(`#kasirName-${id}`).text(data.status_order && data.status_order.kasir ? data.status_order.kasir.nama : 'N/A');
+                        $(`#kasirWaktu-${id}`).text(data.status_order && data.status_order.waktu_bayar ? data.status_order.waktu_bayar : 'N/A');
+
+                        $(`#desainName-${id}`).text(data.status_order && data.status_order.desain ? data.status_order.desain.nama : 'N/A');
+                        $(`#desainWaktu-${id}`).text(data.status_order && data.status_order.waktu_design ? data.status_order.waktu_design : 'N/A');
+
+                        $(`#operatorName-${id}`).text(data.status_order && data.status_order.operator ? data.status_order.operator.nama : 'N/A');
+                        $(`#operatorWaktu-${id}`).text(data.status_order && data.status_order.waktu_operator ? data.status_order.waktu_operator : 'N/A');
+                        
+                        $(`#finishingName-${id}`).text(data.status_order && data.status_order.finishing ? data.status_order.finishing.nama : 'N/A');
+                        $(`#finishingWaktu-${id}`).text(data.status_order && data.status_order.waktu_finishing ? data.status_order.waktu_finishing : 'N/A');
+                        
+                        // console.log('Kasir waktu:', kasirName);
+                        // console.log('Desain waktu:', desainName);
+                        // console.log('Operator waktu:', operatorName);
+                        // console.log('Finishing waktu:', finishingName);
+                    },
+                    error: function(error) {
+                        console.error('Error fetching preorder details:', error);
+                    }
                 });
             }
         </script>
